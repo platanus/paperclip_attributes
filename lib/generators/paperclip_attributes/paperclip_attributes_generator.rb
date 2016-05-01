@@ -1,5 +1,5 @@
 class PaperclipAttributesGenerator < Rails::Generators::Base
-  VALID_ATTRIBUTES = %w(dimensions).freeze
+  VALID_ATTRIBUTES = %w(dimensions color).freeze
 
   source_root File.expand_path('../templates', __FILE__)
 
@@ -18,7 +18,7 @@ class PaperclipAttributesGenerator < Rails::Generators::Base
       fail "Invalid attribute given" unless VALID_ATTRIBUTES.include?(attribute)
       case attribute.to_sym
       when :dimensions then result[:width] = result[:height] = :integer
-        # TODO: add more cases
+      when :color then result[:dominant_color] = :string
       end
       result
     end.map { |k, v| "#{attachment}_#{k}:#{v}" }.join(" ")
