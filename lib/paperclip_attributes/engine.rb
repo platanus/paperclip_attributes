@@ -5,6 +5,8 @@ module PaperclipAttributes
     end
 
     initializer "initialize" do
+      require_relative "./error"
+      require_relative "./commands/get_changed_paperclip_columns"
       require_relative "./attributes"
     end
   end
