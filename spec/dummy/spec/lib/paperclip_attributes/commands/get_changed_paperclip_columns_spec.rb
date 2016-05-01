@@ -9,8 +9,6 @@ RSpec.describe PaperclipAttributes::Commands::GetChangedPaperclipColumns do
   end
 
   describe "#perform" do
-    let(:avatar) { fixture_file_upload("bukowski.jpg", "image/png") }
-
     context "without modifications on paperclip columns" do
       before { @cmd = described_class.new(User.new) }
 
@@ -21,7 +19,7 @@ RSpec.describe PaperclipAttributes::Commands::GetChangedPaperclipColumns do
 
     context "with changed paperclip columns" do
       before do
-        user = User.new(avatar: avatar)
+        user = User.new(avatar: fixture_file_upload("bukowski.jpg", "image/png"))
         @cmd = described_class.new(user)
       end
 
