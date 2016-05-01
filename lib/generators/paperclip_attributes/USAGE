@@ -1,8 +1,8 @@
 Description:
   This generator adds to a model's paperclip attachment the attributes passed as params.
   - model: is the Active Record model containing the attachment you want to add attributes.
-  - attachment: is the paperclip's attribute on given model.
-  - attributes: is a attributes list you want to add to attachment.
+  - attachment: is the paperclip's attachment on given model.
+  - recipes: is a list of recipes to extend the attachment. A recipe represents one or more attributes related to the attachment param.
 
 Example:
   rails generate paperclip_attributes User avatar dimensions

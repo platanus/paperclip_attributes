@@ -5,7 +5,7 @@ class PaperclipAttributesGenerator < Rails::Generators::Base
 
   argument :model, required: true, banner: "model"
   argument :attachment, required: true, banner: "attachment"
-  argument :attributes, required: true, type: :array, banner: "attribute_one attribute_two..."
+  argument :recipes, required: true, type: :array, banner: "recipe_one recipe_two..."
 
   def generate_migration
     generate "migration #{migration_name} #{migration_attributes}"
@@ -14,7 +14,7 @@ class PaperclipAttributesGenerator < Rails::Generators::Base
   private
 
   def migration_attributes
-    attributes.inject({}) do |result, attribute|
+    recipes.inject({}) do |result, attribute|
       fail "Invalid attribute given" unless VALID_ATTRIBUTES.include?(attribute)
       case attribute.to_sym
       when :dimensions then result[:width] = result[:height] = :integer
@@ -25,7 +25,7 @@ class PaperclipAttributesGenerator < Rails::Generators::Base
   end
 
   def migration_name
-    "add_#{attachment}_#{attributes.join('_')}_to_#{table_name}"
+    "add_#{attachment}_#{recipes.join('_')}_to_#{table_name}"
   end
 
   def table_name
