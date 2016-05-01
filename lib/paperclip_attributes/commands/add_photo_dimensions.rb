@@ -15,13 +15,8 @@ module PaperclipAttributes
 
       private
 
-      def image?
-        content_type = model.send("#{column}_content_type")
-        content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}
-      end
-
       def extract_dimensions
-        return unless image?
+        return unless PaperclipAttributes::Helpers.image?(model, column)
         tempfile = model.send(column).queued_for_write[:original]
         return if tempfile.nil?
         geometry = Paperclip::Geometry.from_file(tempfile)
