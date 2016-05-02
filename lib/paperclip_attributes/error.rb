@@ -1,8 +1,8 @@
 module PaperclipAttributes
   module Error
-    class InvalidActiveRecordModel < Exception
+    class UnknownRecipe < Exception
       def initialize
-        super("you need to pass an ActiveRecord model instance")
+        super("the given recipe is invalid")
       end
     end
   end

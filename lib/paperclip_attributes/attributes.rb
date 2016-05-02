@@ -2,7 +2,7 @@ module PaperclipAttributes
   module Attributes
     extend ActiveSupport::Concern
 
-    COMMANDS = {
+    RECIPES = {
       color: PaperclipAttributes::Commands::AddPhotoDominantColor,
       dimensions: PaperclipAttributes::Commands::AddPhotoDimensions
     }
@@ -14,14 +14,17 @@ module PaperclipAttributes
         end
       end
 
-      def get_attachment_recipes(attachment)
-        self.class.attachmets_recipes[attachment]
+      def execute_attachment_recipes(attachment)
+        self.class.attachmets_recipes[attachment].each do |recipe|
+          cmd = RECIPES[recipe]
+          raise PaperclipAttributes::Error::UnknownRecipe.new unless cmd
+          cmd.new(self, attachment).perform
+        end
       end
 
       before_save do
         changed_attachments_names.each do |changed_attachment|
-          recipes = get_attachment_recipes(changed_attachment)
-          recipes.each { |recipe| COMMANDS[recipe].new(self, changed_attachment).perform }
+          execute_attachment_recipes(changed_attachment)
         end
       end
     end
