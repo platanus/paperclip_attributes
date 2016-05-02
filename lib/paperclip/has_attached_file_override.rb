@@ -13,5 +13,9 @@ module ::Paperclip
     def attachmets_recipes
       @attachmets_recipes
     end
+
+    def attachments_names
+      attachmets_recipes.keys
+    end
   end
 end

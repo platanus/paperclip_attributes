@@ -7,7 +7,6 @@ module PaperclipAttributes
     initializer "initialize" do
       require_relative "./error"
       require_relative "./helpers"
-      require_relative "./commands/get_changed_paperclip_columns"
       require_relative "./commands/add_photo_dimensions"
       require_relative "./commands/add_photo_dominant_color"
       require_relative "./attributes"
