@@ -47,9 +47,9 @@ user = User.new
 user.avatar = some_file
 user.save!
 
-user.avatar_height = 200
-user.avatar_width = 400
-user.avatar_dominant_color = "#FF9900"
+user.avatar_height #=> 200
+user.avatar_width #=> 400
+user.avatar_dominant_color #=> "#FF9900"
 
 ```
 
