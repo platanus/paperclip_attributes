@@ -32,7 +32,17 @@ The generator, will only create migrations to extend your attachments. So, after
 rake db:migrate
 ```
 
-That's it! the process to extract attributes will be done on `before_save` callback of your `ActiveRecord` model instances, if these models have **modified paperclip attachments.**
+Then, to enable the functionality in your model, you need to add the recipes to the attachment definition:
+
+```ruby
+class MyModel < ActiveRecord::Base
+  has_attached_file :attachment, attributes: [:recipe1, :recipe2]
+end
+```
+
+That's it!
+
+The process to extract attributes will be done on `before_save` callback.
 
 ## Example
 
@@ -40,7 +50,15 @@ That's it! the process to extract attributes will be done on `before_save` callb
 rails g paperclip_attributes User avatar dimensions color
 ```
 
-Then, with an `User` instance, you be able to do something like this:
+In `User` model:
+
+```ruby
+class User < ActiveRecord::Base
+  has_attached_file :avatar, attributes: [:dimensions, :color]
+end
+```
+
+Then, with an `User` instance, you'll be able to do something like this:
 
 ```ruby
 user = User.new
