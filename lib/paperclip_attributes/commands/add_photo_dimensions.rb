@@ -9,8 +9,8 @@ module PaperclipAttributes
       end
 
       def perform
-        dimenssions = extract_dimensions
-        add_dimenssions_to_model(dimenssions)
+        dimensions = extract_dimensions
+        add_dimensions_to_model(dimensions)
       end
 
       private
@@ -22,16 +22,16 @@ module PaperclipAttributes
         end
       end
 
-      def add_dimenssions_to_model(dimenssions)
-        return unless dimenssions
-        add_dimenssion(dimenssions, :width)
-        add_dimenssion(dimenssions, :height)
+      def add_dimensions_to_model(dimensions)
+        return unless dimensions
+        add_dimension(dimensions, :width)
+        add_dimension(dimensions, :height)
       end
 
-      def add_dimenssion(dimenssions, dimenssion)
-        writter_method = "#{column}_#{dimenssion}="
+      def add_dimension(dimensions, dimension)
+        writter_method = "#{column}_#{dimension}="
         model.respond_to?(writter_method)
-        model.send(writter_method, dimenssions[dimenssion])
+        model.send(writter_method, dimensions[dimension])
       end
     end
   end

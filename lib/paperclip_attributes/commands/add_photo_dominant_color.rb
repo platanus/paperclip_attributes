@@ -9,13 +9,13 @@ module PaperclipAttributes
       end
 
       def perform
-        color = calculate_dominan_color
+        color = calculate_dominant_color
         add_dominant_color_to_model(color)
       end
 
       private
 
-      def calculate_dominan_color
+      def calculate_dominant_color
         PaperclipAttributes::Helpers.with_img_tempfile(model, column) do |tempfile|
           Miro.options[:color_count] = 1
           Miro.options[:method] = "histogram"
