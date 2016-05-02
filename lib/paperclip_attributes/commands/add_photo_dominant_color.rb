@@ -1,22 +1,17 @@
 module PaperclipAttributes
   module Commands
     class AddPhotoDominantColor
-      attr_reader :model, :column
-
-      def initialize(model, column)
-        @model = model
-        @column = column
-      end
+      include PaperclipAttributes::Command
 
       def perform
         color = calculate_dominant_color
-        add_dominant_color_to_model(color)
+        set_attribute(:dominant_color, color)
       end
 
       private
 
       def calculate_dominant_color
-        PaperclipAttributes::Helpers.with_img_tempfile(model, column) do |tempfile|
+        with_img_tempfile do |tempfile|
           Miro.options[:color_count] = 1
           Miro.options[:method] = "histogram"
           colors = Miro::DominantColors.new(tempfile.path)
@@ -34,10 +29,6 @@ module PaperclipAttributes
         end
 
         "#%02x%02x%02x" % rgb
-      end
-
-      def add_dominant_color_to_model(color)
-        PaperclipAttributes::Helpers.set_attribute(model, column, :dominant_color, color)
       end
     end
   end

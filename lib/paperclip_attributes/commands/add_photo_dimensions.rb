@@ -1,12 +1,7 @@
 module PaperclipAttributes
   module Commands
     class AddPhotoDimensions
-      attr_reader :model, :column
-
-      def initialize(model, column)
-        @model = model
-        @column = column
-      end
+      include PaperclipAttributes::Command
 
       def perform
         dimensions = extract_dimensions
@@ -16,7 +11,7 @@ module PaperclipAttributes
       private
 
       def extract_dimensions
-        PaperclipAttributes::Helpers.with_img_tempfile(model, column) do |tempfile|
+        with_img_tempfile do |tempfile|
           geometry = Paperclip::Geometry.from_file(tempfile)
           { width: geometry.width.to_i, height: geometry.height.to_i }
         end
@@ -24,13 +19,8 @@ module PaperclipAttributes
 
       def add_dimensions_to_model(dimensions)
         return unless dimensions
-        add_dimension(dimensions, :width)
-        add_dimension(dimensions, :height)
-      end
-
-      def add_dimension(dimensions, dimension)
-        PaperclipAttributes::Helpers.set_attribute(
-          model, column, dimension, dimensions[dimension])
+        set_attribute(:width, dimensions[:width])
+        set_attribute(:height, dimensions[:height])
       end
     end
   end

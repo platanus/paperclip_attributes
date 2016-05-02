@@ -11,5 +11,11 @@ module PaperclipAttributes
         super("you need to execute the paperclip_attributes generator with recipes you need")
       end
     end
+
+    class PerformNotImplemented < Exception
+      def initialize
+        super("override perform method in host class")
+      end
+    end
   end
 end
