@@ -37,9 +37,7 @@ module PaperclipAttributes
       end
 
       def add_dominant_color_to_model(color)
-        return unless color
-        writter_method = "#{column}_dominant_color="
-        model.send(writter_method, color) if model.respond_to?(writter_method)
+        PaperclipAttributes::Helpers.set_attribute(model, column, :dominant_color, color)
       end
     end
   end

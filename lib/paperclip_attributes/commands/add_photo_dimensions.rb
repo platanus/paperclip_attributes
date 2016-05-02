@@ -29,8 +29,8 @@ module PaperclipAttributes
       end
 
       def add_dimension(dimensions, dimension)
-        writter_method = "#{column}_#{dimension}="
-        model.send(writter_method, dimensions[dimension]) if model.respond_to?(writter_method)
+        PaperclipAttributes::Helpers.set_attribute(
+          model, column, dimension, dimensions[dimension])
       end
     end
   end

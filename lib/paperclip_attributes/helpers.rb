@@ -15,5 +15,15 @@ module PaperclipAttributes
       return unless image?(model, column)
       with_tempfile(model, column, &block)
     end
+
+    def self.set_attribute(model, column, attribute, value)
+      writter_method = "#{column}_#{attribute}="
+
+      if !model.respond_to?(writter_method)
+        raise PaperclipAttributes::Error::AttributeNotFound.new
+      end
+
+      model.send(writter_method, value)
+    end
   end
 end
