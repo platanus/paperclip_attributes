@@ -39,8 +39,7 @@ module PaperclipAttributes
       def add_dominant_color_to_model(color)
         return unless color
         writter_method = "#{column}_dominant_color="
-        model.respond_to?(writter_method)
-        model.send(writter_method, color)
+        model.send(writter_method, color) if model.respond_to?(writter_method)
       end
     end
   end

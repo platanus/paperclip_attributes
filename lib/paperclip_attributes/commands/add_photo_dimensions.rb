@@ -30,8 +30,7 @@ module PaperclipAttributes
 
       def add_dimension(dimensions, dimension)
         writter_method = "#{column}_#{dimension}="
-        model.respond_to?(writter_method)
-        model.send(writter_method, dimensions[dimension])
+        model.send(writter_method, dimensions[dimension]) if model.respond_to?(writter_method)
       end
     end
   end
