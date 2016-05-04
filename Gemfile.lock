@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    paperclip_attributes (0.0.1)
+    paperclip_attributes (0.1.0)
       miro (~> 0.3.0)
       paperclip (~> 4.3.6)
       rails (~> 4.2.5.2)
