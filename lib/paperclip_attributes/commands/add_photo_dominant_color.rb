@@ -17,8 +17,12 @@ module PaperclipAttributes
           colors = Miro::DominantColors.new(tempfile.path)
           lighten_color(colors.to_hex.first)
         end
-      rescue
-        nil
+      rescue Exception => e
+        default_color = "#BCBABA"
+        Rails.logger.info("Error trying to get dominant color...")
+        Rails.logger.info(e.message)
+        Rails.logger.info("Returning default: #{default_color}")
+        default_color
       end
 
       def lighten_color(hex_color, amount = 0.2)
