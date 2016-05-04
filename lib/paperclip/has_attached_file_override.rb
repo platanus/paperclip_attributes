@@ -11,7 +11,7 @@ module ::Paperclip
     end
 
     def attachmets_recipes
-      @attachmets_recipes
+      @attachmets_recipes || {}
     end
 
     def attachments_names
