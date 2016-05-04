@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split($/).reject { |fn| fn.start_with? "spec" }
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.5.2"
-  s.add_dependency "paperclip", "~> 4.3.6"
+  s.add_dependency "rails", "~> 4.2", ">= 4.2.0"
+  s.add_dependency "paperclip", "~> 4.2", ">= 4.2.0"
   s.add_dependency "miro", "~> 0.3.0"
 
   s.add_development_dependency "pry"
