@@ -4,6 +4,9 @@ RSpec.describe PaperclipAttributes::Commands::AddPhotoDominantColor do
   describe "#perform" do
     context "with image content type" do
       before do
+        allow_any_instance_of(Miro::DominantColors).to(
+          receive(:to_hex).and_return(double(first: "#6a675c"))
+        )
         @user = User.new(avatar: fixture_file_upload("bukowski.jpg", "image/png"))
         described_class.new(@user, :avatar).perform
       end

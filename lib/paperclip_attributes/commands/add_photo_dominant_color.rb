@@ -19,9 +19,9 @@ module PaperclipAttributes
         end
       rescue Exception => e
         default_color = "#BCBABA"
-        Rails.logger.info("Error trying to get dominant color...")
-        Rails.logger.info(e.message)
-        Rails.logger.info("Returning default: #{default_color}")
+        Rails.logger.error("Error trying to get dominant color...")
+        Rails.logger.error(e.message)
+        Rails.logger.error("Returning default: #{default_color}")
         default_color
       end
 
