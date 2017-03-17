@@ -1,0 +1,15 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.3.1
+script:
+  - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
+  - cd ../.. && bundle exec rspec spec
+deploy:
+  provider: rubygems
+  api_key:
+    secure: PEMMDcT4SKPdv4xMJmIEpndOGePsV3kDOhUL0vEDjTeyxBrn+iBgHKF9itSYbUmOSTuOaiIVleYmuC6GoAmg4KcZIZvfCA61cGCX1ADU5nwh5FjC/tAEs8eShMR3RFG6wyykb4MdFkE2jVpm/W0pyciLgW2HrM6iYzI6X2iMn9E=
+  gem: paperclip_attributes
+  on:
+    tags: true
+    repo: platanus/paperclip_attributes

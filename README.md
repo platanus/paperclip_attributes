@@ -1,4 +1,4 @@
-# Paperclip Attributes
+# Paperclip Attributes  [![Build Status](https://travis-ci.org/platanus/paperclip_attributes.svg?branch=master)](https://travis-ci.org/platanus/paperclip_attributes) [![Coverage Status](https://coveralls.io/repos/github/platanus/paperclip_attributes/badge.svg)](https://coveralls.io/github/platanus/paperclip_attributes)
 
 Rails Engine built on top of [Paperclip](https://github.com/thoughtbot/paperclip) gem to add attributes, as columns in your models, related to your attachments.
 
