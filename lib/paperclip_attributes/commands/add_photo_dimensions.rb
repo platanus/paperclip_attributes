@@ -8,6 +8,10 @@ module PaperclipAttributes
         add_dimensions_to_model(dimensions)
       end
 
+      def adios
+        "adios"
+      end
+
       private
 
       def extract_dimensions

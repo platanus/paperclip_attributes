@@ -8,6 +8,10 @@ module PaperclipAttributes
         set_attribute(:dominant_color, color)
       end
 
+      def chau
+        "chau"
+      end
+
       private
 
       def calculate_dominant_color
