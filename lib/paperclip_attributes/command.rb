@@ -14,6 +14,10 @@ module PaperclipAttributes
         raise PaperclipAttributes::Error::PerformNotImplemented.new
       end
 
+      def example
+        "hola"
+      end
+
       def image?
         content_type = model.send("#{column}_content_type")
         content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}
