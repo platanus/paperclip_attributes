@@ -8,6 +8,14 @@ module PaperclipAttributes
         add_dimensions_to_model(dimensions)
       end
 
+      def hola
+        "hola"
+      end
+
+      def chau
+        "chau"
+      end
+
       private
 
       def extract_dimensions
