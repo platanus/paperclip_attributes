@@ -18,12 +18,12 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2", ">= 4.2.0"
-  s.add_dependency "paperclip", "~> 4.2", ">= 4.2.0"
+  s.add_dependency "paperclip"
   s.add_dependency "miro", "~> 0.3.0"
 
   s.add_development_dependency "pry"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.4.0"
-  s.add_development_dependency "factory_girl_rails", "~> 4.6.0"
+  s.add_development_dependency "factory_bot_rails"
   s.add_development_dependency "coveralls"
 end
