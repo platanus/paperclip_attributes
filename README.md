@@ -2,6 +2,12 @@
 
 Rails Engine built on top of [Paperclip](https://github.com/thoughtbot/paperclip) gem to add attributes, as columns in your models, related to your attachments.
 
+## Paperclip Attributes is no longer maintained.
+
+- We will leave the Issues open as a discussion forum only.
+- We do not guarantee a response from us in the Issues.
+- We are no longer accepting pull requests.
+
 ## Installation
 
 Add to your Gemfile:
